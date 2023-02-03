@@ -1,3 +1,6 @@
 [submodule "scad-utils"]
 	path = scad-utils
 	url = https://github.com/openscad/scad-utils.git
+[submodule "list-comprehension-demos"]
+	path = list-comprehension-demos
+	url = https://github.com/openscad/list-comprehension-demos.git
