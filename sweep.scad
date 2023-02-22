@@ -1,1 +1,0 @@
-list-comprehension-demos/sweep.scad
