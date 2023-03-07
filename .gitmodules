@@ -4,3 +4,6 @@
 [submodule "list-comprehension-demos"]
 	path = list-comprehension-demos
 	url = https://github.com/openscad/list-comprehension-demos.git
+[submodule "z-butt-openscad"]
+	path = z-butt-openscad
+	url = https://github.com/yatara-cc/z-butt-openscad.git
