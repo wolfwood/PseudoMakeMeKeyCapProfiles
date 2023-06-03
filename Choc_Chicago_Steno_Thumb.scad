@@ -9,8 +9,10 @@ use <skin.scad>
 // Choc Chord version Chicago Stenographer with sculpte Thumb cluter
 // change stemrot
 
-mirror([0,0,0])keycap(
-  keyID   = 3, //change profile refer to KeyParameters Struct
+keycap(
+       $trimmer = //[[0,0],[0,0]],
+       [[1.5,1],[0,1]],
+  keyID   = 1, //change profile refer to KeyParameters Struct
   cutLen  = 0, //Don't change. for chopped caps
   Stem    = true, //tusn on shell and stems
   StemRot = 0,//change stem orientation by deg
@@ -22,6 +24,140 @@ mirror([0,0,0])keycap(
   Legends = false
 );
 
+translate([15,0,0])
+mirror([1,0,0]) keycap(
+       $trimmer = //[[0,0],[0,0]],
+       [[1.5,1],[0,1]],
+  keyID   = 1, //change profile refer to KeyParameters Struct
+  cutLen  = 0, //Don't change. for chopped caps
+  Stem    = true, //tusn on shell and stems
+  StemRot = 0,//change stem orientation by deg
+  Dish    = true, //turn on dish cut
+  Stab    = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+);
+
+translate([0,15,0])
+rotate([0,0,180])
+mirror([1,0,0])
+keycap(
+       $trimmer = //[[0,0],[0,0]],
+       [[1.5,1],[0,0]],
+  keyID   = 0, //change profile refer to KeyParameters Struct
+  cutLen  = 0, //Don't change. for chopped caps
+  Stem    = true, //tusn on shell and stems
+  StemRot = 0,//change stem orientation by deg
+  Dish    = true, //turn on dish cut
+  Stab    = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+);
+
+translate([15,15,0])
+//mirror([1,0,0])
+rotate([0,0,180])
+keycap(
+       $trimmer = //[[0,0],[0,0]],
+       [[1.5,1],[0,0]],
+  keyID   = 0, //change profile refer to KeyParameters Struct
+  cutLen  = 0, //Don't change. for chopped caps
+  Stem    = true, //tusn on shell and stems
+  StemRot = 0,//change stem orientation by deg
+  Dish    = true, //turn on dish cut
+  Stab    = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+);
+
+translate([0,-15,0])
+keycap(
+       $trimmer = //[[0,0],[0,0]],
+       [[1.5,1],[0,0]],
+  keyID   = 0, //change profile refer to KeyParameters Struct
+  cutLen  = 0, //Don't change. for chopped caps
+  Stem    = true, //tusn on shell and stems
+  StemRot = 0,//change stem orientation by deg
+  Dish    = true, //turn on dish cut
+  Stab    = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+);
+
+translate([15,-15,0])
+mirror([1,0,0])
+keycap(
+       $trimmer = //[[0,0],[0,0]],
+       [[1.5,1],[0,0]],
+  keyID   = 0, //change profile refer to KeyParameters Struct
+  cutLen  = 0, //Don't change. for chopped caps
+  Stem    = true, //tusn on shell and stems
+  StemRot = 0,//change stem orientation by deg
+  Dish    = true, //turn on dish cut
+  Stab    = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+);
+
+*translate([0,20,0])
+keycap(
+       $trimmer = [[0,0],[0,0]],
+       //[[1.5,1],[0,1]],
+  keyID   = 1, //change profile refer to KeyParameters Struct
+  cutLen  = 0, //Don't change. for chopped caps
+  Stem    = true, //tusn on shell and stems
+  StemRot = 0,//change stem orientation by deg
+  Dish    = true, //turn on dish cut
+  Stab    = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+);
+
+*difference() {
+keycap(
+       $trimmer = //[[0,0],[0,0]],
+       [[1.5,1],[0,1]],
+  keyID   = 1, //change profile refer to KeyParameters Struct
+  cutLen  = 0, //Don't change. for chopped caps
+  Stem    = true, //tusn on shell and stems
+  StemRot = 0,//change stem orientation by deg
+  Dish    = true, //turn on dish cut
+  Stab    = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+);
+
+//translate([0,20,0])
+keycap(
+       $trimmer = [[0,0],[0,0]],
+       //[[1.5,1],[0,1]],
+  keyID   = 1, //change profile refer to KeyParameters Struct
+  cutLen  = 0, //Don't change. for chopped caps
+  Stem    = true, //tusn on shell and stems
+  StemRot = 0,//change stem orientation by deg
+  Dish    = true, //turn on dish cut
+  Stab    = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+);
+
+}
 //-Parameters
 wallthickness = 1.1; // 1.75 for mx size, 1.1
 topthickness = 2.5; //2 for phat 3 for chicago
@@ -42,6 +178,8 @@ stemLayers = 50; //resolution of stem to cap top transition
 //injection param
 draftAngle = 0; //degree  note:Stem Only
 //TODO: Add wall thickness transition?
+
+
 
 keyParameters = //keyParameters[KeyID][ParameterID]
 [
@@ -134,13 +272,13 @@ SecondaryDishParam =
   [   6,  3.5,    7,  -50,      5,  1.0,   16,    23,     2,          6,  3.5,    7,   -50,   16,    23,     2], //Levee Steno R2/R4
   [   6,  3.5,    7,  -50,      3,    2,    8,     8,     2,          5,    5,    5,    15,   10,    20,     2], //Levee Steno R2/R4
 ];
-function BottomWidth(keyID)  = keyParameters[keyID][0];  //
-function BottomLength(keyID) = keyParameters[keyID][1];  //
-function TopWidthDiff(keyID) = keyParameters[keyID][2];  //
-function TopLenDiff(keyID)   = keyParameters[keyID][3];  //
+function BottomWidth(keyID)  = keyParameters[keyID][0]-($trimmer.x.x+$trimmer.y.x);  //
+function BottomLength(keyID) = keyParameters[keyID][1]-($trimmer.x.y+$trimmer.y.y);  //
+function TopWidthDiff(keyID) = keyParameters[keyID][2]-($trimmer.x.x+$trimmer.y.x);  //
+function TopLenDiff(keyID)   = keyParameters[keyID][3]-($trimmer.x.y+$trimmer.y.y);  //
 function KeyHeight(keyID)    = keyParameters[keyID][4];  //
-function TopWidShift(keyID)  = keyParameters[keyID][5];
-function TopLenShift(keyID)  = keyParameters[keyID][6];
+function TopWidShift(keyID)  = keyParameters[keyID][5]-($trimmer.x.x-$trimmer.y.x)/2;
+function TopLenShift(keyID)  = keyParameters[keyID][6]-($trimmer.x.y-$trimmer.y.y)/2;
 function XAngleSkew(keyID)   = keyParameters[keyID][7];
 function YAngleSkew(keyID)   = keyParameters[keyID][8];
 function ZAngleSkew(keyID)   = keyParameters[keyID][9];
@@ -266,8 +404,8 @@ path_trans2 = [for (t=[0:step:180])   translation(oval_path(t,0,10,15,2,0))*rota
 //--------------Function definng Cap
 function CapTranslation(t, keyID) =
   [
-    ((1-t)/layers*TopWidShift(keyID)),   //X shift
-    ((1-t)/layers*TopLenShift(keyID)),   //Y shift
+   ((1-t)/layers*TopWidShift(keyID))-($trimmer.x.x-$trimmer.y.x)/2,   //X shift
+    ((1-t)/layers*TopLenShift(keyID))-($trimmer.x.y-$trimmer.y.y)/2,   //Y shift
     (t/layers*KeyHeight(keyID))    //Z shift
   ];
 
@@ -300,8 +438,8 @@ function CapRadius(t, keyID) = pow(t/layers, ChamExponent(keyID))*ChamfFinRad(ke
 
 function InnerTransform(t, keyID) =
   [
-    pow(t/layers, WidExponent(keyID))*(BottomWidth(keyID) -TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/layers, WidExponent(keyID)))*(BottomWidth(keyID) -wallthickness*2),
-    pow(t/layers, LenExponent(keyID))*(BottomLength(keyID)-TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/layers, LenExponent(keyID)))*(BottomLength(keyID)-wallthickness*2)
+    pow(t/layers, WidExponent(keyID))*(BottomWidth(keyID) -TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/layers, WidExponent(keyID)))*(BottomWidth(keyID)+($trimmer.x.x+$trimmer.y.x) -wallthickness*2),
+    pow(t/layers, LenExponent(keyID))*(BottomLength(keyID)-TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/layers, LenExponent(keyID)))*(BottomLength(keyID)+($trimmer.x.y+$trimmer.y.y)-wallthickness*2)
   ];
 
 function StemTranslation(t, keyID) =
@@ -391,8 +529,8 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
      }
     //cut for fonts and extra pattern for light?
      if(visualizeDish == true && Dish == true){
-      #translate([-TopWidShift(keyID),.0001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
-      #translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(BackCurve);
+      #translate([-TopWidShift(keyID)-($trimmer.x.x-$trimmer.y.x)/2,.0001-TopLenShift(keyID)-($trimmer.x.y-$trimmer.y.y)/2,KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
+      #translate([-TopWidShift(keyID)-($trimmer.x.x-$trimmer.y.x)/2,-TopLenShift(keyID)-($trimmer.x.y-$trimmer.y.y)/2,KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(BackCurve);
      }
     }
 
@@ -409,8 +547,8 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
       }
    //Dish Shape
     if(Dish == true){
-      translate([-TopWidShift(keyID),.0001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
-      translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(BackCurve);
+      translate([-TopWidShift(keyID)-($trimmer.x.x-$trimmer.y.x)/2,.0001-TopLenShift(keyID)-($trimmer.x.y-$trimmer.y.y)/2,KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
+      translate([-TopWidShift(keyID)-($trimmer.x.x-$trimmer.y.x)/2,-TopLenShift(keyID)-($trimmer.x.y-$trimmer.y.y)/2,KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(BackCurve);
 
 
      if(SecondaryDish == true){
