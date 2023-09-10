@@ -10,8 +10,40 @@ use <skin.scad>
 //Choc Chord version Chicago Stenographer
 
 /*Tester */
-keycap(
+keycap($trimmer = //[[0,0],[0,0]],
+       [[0,1],[0,1]],
   keyID  = 1, //change profile refer to KeyParameters Struct
+  cutLen = 0, //Don't change. for chopped caps
+  Stem   = true, //tusn on shell and stems
+  StemRot = 0, //change stem orientation by deg
+  Dish   = true, //turn on dish cut
+  Stab   = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+  );
+
+translate([0,15,0])
+rotate([0,0,180])
+keycap($trimmer = //[[0,0],[0,0]],
+       [[0,1],[0,0]],
+  keyID  = 0, //change profile refer to KeyParameters Struct
+  cutLen = 0, //Don't change. for chopped caps
+  Stem   = true, //tusn on shell and stems
+  StemRot = 0, //change stem orientation by deg
+  Dish   = true, //turn on dish cut
+  Stab   = 0,
+  visualizeDish = false, // turn on debug visual of Dish
+  crossSection  = false, // center cut to check internal
+  homeDot = false, //turn on homedots
+  Legends = false
+  );
+
+translate([0,-15,0])
+keycap($trimmer = //[[0,0],[0,0]],
+       [[0,1],[0,0]],
+  keyID  = 0, //change profile refer to KeyParameters Struct
   cutLen = 0, //Don't change. for chopped caps
   Stem   = true, //tusn on shell and stems
   StemRot = 0, //change stem orientation by deg
@@ -106,14 +138,18 @@ dishParameters = //dishParameter[keyID][ParameterID]
   [ 4.5,    4,    7,  -50,      7,    1.7,   11,    17,     2,      4.5,    4,    2,   -35,   11,    15,     2] //Chicago Steno R1
 ];
 
+function TrimX() = is_undef($trimmer) ? 0 : ($trimmer.x.x+$trimmer.y.x);
+function TrimY() = is_undef($trimmer) ? 0 : ($trimmer.x.y+$trimmer.y.y);
+function TrimShiftX() = is_undef($trimmer) ? 0 : ($trimmer.x.x-$trimmer.y.x)/2;
+function TrimShiftY() = is_undef($trimmer) ? 0 : ($trimmer.x.y-$trimmer.y.y)/2;
 
-function BottomWidth(keyID)  = keyParameters[keyID][0];  //
-function BottomLength(keyID) = keyParameters[keyID][1];  //
-function TopWidthDiff(keyID) = keyParameters[keyID][2];  //
-function TopLenDiff(keyID)   = keyParameters[keyID][3];  //
+function BottomWidth(keyID)  = keyParameters[keyID][0] - TrimX();  //
+function BottomLength(keyID) = keyParameters[keyID][1] - TrimY();  //
+function TopWidthDiff(keyID) = keyParameters[keyID][2] - TrimX();  //
+function TopLenDiff(keyID)   = keyParameters[keyID][3] - TrimY();  //
 function KeyHeight(keyID)    = keyParameters[keyID][4];  //
-function TopWidShift(keyID)  = keyParameters[keyID][5];
-function TopLenShift(keyID)  = keyParameters[keyID][6];
+function TopWidShift(keyID)  = keyParameters[keyID][5] - TrimShiftX();
+function TopLenShift(keyID)  = keyParameters[keyID][6] - TrimShiftY();
 function XAngleSkew(keyID)   = keyParameters[keyID][7];
 function YAngleSkew(keyID)   = keyParameters[keyID][8];
 function ZAngleSkew(keyID)   = keyParameters[keyID][9];
@@ -188,8 +224,8 @@ path_trans2 = [for (t=[0:step:180])   translation(oval_path(t,0,10,15,2,0))*rota
 //--------------Function definng Cap
 function CapTranslation(t, keyID) =
   [
-    ((1-t)/layers*TopWidShift(keyID)),   //X shift
-    ((1-t)/layers*TopLenShift(keyID)),   //Y shift
+   ((1-t)/layers*TopWidShift(keyID)) - TrimShiftX(),   //X shift
+   ((1-t)/layers*TopLenShift(keyID)) - TrimShiftY(),   //Y shift
     (t/layers*KeyHeight(keyID))    //Z shift
   ];
 
@@ -222,8 +258,8 @@ function CapRadius(t, keyID) = pow(t/layers, ChamExponent(keyID))*ChamfFinRad(ke
 
 function InnerTransform(t, keyID) =
   [
-    pow(t/layers, WidExponent(keyID))*(BottomWidth(keyID) -TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/layers, WidExponent(keyID)))*(BottomWidth(keyID) -wallthickness*2),
-    pow(t/layers, LenExponent(keyID))*(BottomLength(keyID)-TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/layers, LenExponent(keyID)))*(BottomLength(keyID)-wallthickness*2)
+   pow(t/layers, WidExponent(keyID))*(BottomWidth(keyID) -TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/layers, WidExponent(keyID)))*(BottomWidth(keyID) + TrimX() -wallthickness*2),
+   pow(t/layers, LenExponent(keyID))*(BottomLength(keyID)-TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/layers, LenExponent(keyID)))*(BottomLength(keyID) + TrimY() -wallthickness*2)
   ];
 
 function StemTranslation(t, keyID) =
@@ -302,11 +338,11 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
    //Dish Shape
     if(Dish == true){
      if(visualizeDish == false){
-      translate([-TopWidShift(keyID),.001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
-      translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(BackCurve);
+       translate([-TopWidShift(keyID)-TrimShiftX(),.001-TopLenShift(keyID)-TrimShiftY(),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
+      translate([-TopWidShift(keyID)-TrimShiftX(),-TopLenShift(keyID)-TrimShiftY(),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(BackCurve);
      } else {
-      #translate([-TopWidShift(keyID),.001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)]) rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
-      #translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(BackCurve);
+      #translate([-TopWidShift(keyID)-TrimShiftX(),.001-TopLenShift(keyID)-TrimShiftY(),KeyHeight(keyID)-DishHeightDif(keyID)]) rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
+      #translate([-TopWidShift(keyID)-TrimShiftX(),-TopLenShift(keyID)-TrimShiftY(),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(BackCurve);
      }
    }
      if(crossSection == true) {
