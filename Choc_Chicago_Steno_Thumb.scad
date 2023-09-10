@@ -306,8 +306,8 @@ function InnerTransform(t, keyID) =
 
 function StemTranslation(t, keyID) =
   [
-    0,   //X shift
-    0,   //Y shift
+    is_undef($stem_offset) || !is_list($stem_offset) || is_undef($stem_offset.x) ? 0 : $stem_offset.x,   //X shift
+    is_undef($stem_offset) || !is_list($stem_offset) || is_undef($stem_offset.y) ? 0 : $stem_offset.y,   //Y shift
     stemCrossHeight+.1 + (t/stemLayers*(KeyHeight(keyID)- topthickness + .8 - stemCrossHeight-.1))    //Z shift
   ];
 
@@ -375,17 +375,56 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
 
         //Cut inner shell
         if(Stem == true){
-          translate([0,0,-.001])skin([for (i=[0:layers-1]) transform(translation(InnerTranslation(i, keyID)) * rotation(CapRotation(i, keyID)), elliptical_rectangle(InnerTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]);
+
+	  if (!is_undef($stem_offset) && is_list($stem_offset) && $stem_offset != [0,0,0])
+	    translate([is_undef($stem_offset.x) ? 0 : $stem_offset.x,is_undef($stem_offset.y) ? 0 : $stem_offset.y,0])
+	      intersection() {
+	      let(x=16,y=x,z=1.9) translate([0,0,z/2-.001]) cube([x,y,z], center=true);
+	      translate([0,0,-.001])skin([for (i=[0:layers-1]) transform(translation(InnerTranslation(i, keyID)) /* rotation(CapRotation(i, keyID))*/, elliptical_rectangle(InnerTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]);
+	    }
+
+	  translate([0,0,-.001])skin([for (i=[0:layers-1]) transform(translation(InnerTranslation(i, keyID)) * rotation(CapRotation(i, keyID)), elliptical_rectangle(InnerTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]);
+
+	  if (!is_undef($stem_offset) && is_list($stem_offset) && $stem_offset != [0,0,0])
+	    translate([is_undef($stem_offset.x) ? 0 : $stem_offset.x,
+		       is_undef($stem_offset.y) ? 0 : $stem_offset.y,
+		       0] +
+		      [0, 19 * (abs($stem_offset.y) == $stem_offset.y ? -1 : 1), 0])
+	      intersection() {
+	      let(x=16,y=x,z=1.9) translate([0,0,z/2-.001]) cube([x,y,z], center=true);
+	      translate([0,0,-.001])skin([for (i=[0:layers-1]) transform(translation(InnerTranslation(i, keyID)) /* rotation(CapRotation(i, keyID))*/, elliptical_rectangle(InnerTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]);
+	    }
+	  if (!is_undef($stem_offset) && is_list($stem_offset) && $stem_offset != [0,0,0])
+	    translate([is_undef($stem_offset.x) ? 0 : $stem_offset.x,
+		       is_undef($stem_offset.y) ? 0 : $stem_offset.y,
+		       0] +
+		      [19 * (abs($stem_offset.x) == $stem_offset.x ? -1 : 1), 0, 0])
+	      intersection() {
+	      let(x=16,y=x,z=1.9) translate([0,0,z/2-.001]) cube([x,y,z], center=true);
+	      translate([0,0,-.001])skin([for (i=[0:layers-1]) transform(translation(InnerTranslation(i, keyID)) /* rotation(CapRotation(i, keyID))*/, elliptical_rectangle(InnerTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]);
+	    }
+	  if (!is_undef($stem_offset) && is_list($stem_offset) && $stem_offset != [0,0,0])
+	    translate([is_undef($stem_offset.x) ? 0 : $stem_offset.x,
+		       is_undef($stem_offset.y) ? 0 : $stem_offset.y,
+		       0] +
+		      [19 * (abs($stem_offset.x) == $stem_offset.x ? -1 : 1), 19 * (abs($stem_offset.y) == $stem_offset.y ? -1 : 1), 0])
+	      intersection() {
+	      let(x=16,y=x,z=1.9) translate([0,0,z/2-.001]) cube([x,y,z], center=true);
+	      translate([0,0,-.001])skin([for (i=[0:layers-1]) transform(translation(InnerTranslation(i, keyID)) /* rotation(CapRotation(i, keyID))*/, elliptical_rectangle(InnerTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]);
+	    }
         }
       }
       if(Stem == true){
         rotate([0,0,StemRot]){
-          choc_stem(draftAng = draftAngle);
+          translate([is_undef($stem_offset) || !is_list($stem_offset) || is_undef($stem_offset.x) ? 0 : $stem_offset.x, is_undef($stem_offset) || !is_list($stem_offset) || is_undef($stem_offset.y) ? 0 : $stem_offset.y,0]) choc_stem(draftAng = draftAngle);
           if (Stab != 0){
             translate([Stab/2,0,0])rotate([0,0,StemRot])cherry_stem(KeyHeight(keyID), slop);
             translate([-Stab/2,0,0])rotate([0,0,StemRot])cherry_stem(KeyHeight(keyID), slop);
           }
-          translate([0,0,-.001])skin([for (i=[0:stemLayers-1]) transform(translation(StemTranslation(i,keyID)), rounded_rectangle_profile(StemTransform(i, keyID),fn=fn,r=1 /*StemRadius(i, keyID) */ ))]); //outer shell
+	  intersection() {
+	    translate([0,0,-.001])skin([for (i=[0:stemLayers-1]) transform(translation(StemTranslation(i,keyID)), rounded_rectangle_profile(StemTransform(i, keyID),fn=fn,r=1 /*StemRadius(i, keyID) */ ))]); //outer shell
+	    skin([for (i=[0:layers-1]) transform(translation(CapTranslation(i, keyID)) * rotation(CapRotation(i, keyID)), elliptical_rectangle(CapTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]);//outer shell
+	  }
        }
 
      }
