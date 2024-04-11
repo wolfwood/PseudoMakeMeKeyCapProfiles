@@ -34,7 +34,7 @@ fn            = 60;  //resolution of Rounded Rectangles: 60 for output
 layers        = 50;  //resolution of vertical Sweep: 50 for output
 dotRadius     = 0.55;   //home dot size; default 0.55
 //---Stem param
-Tol    = 0.00;
+Tol    = 0.10;
 stemRot = 0;
 stemWid = 7.55;
 stemLen = 5.55 ;
@@ -43,7 +43,7 @@ extra_vertical  = 0.6;
 StemBrimDep     = -1;
 stemLayers      = 50; //resolution of stem to cap top transition
 
-heightDelta = -1.5;
+heightDelta = -2.5;
 
 keyParameters = //keyParameters[KeyID][ParameterID]
 [
@@ -113,9 +113,9 @@ dishParameters = //dishParameter[keyID][ParameteID]
 [
 //FFwd1 FFwd2 FPit1 FPit2  DshDep DshHDif FArcIn FArcFn FArcEx     BFwd1 BFwd2 BPit1 BPit2  BArcIn BArcFn BArcEx
   // low pro 3 row system
-  [   6,    3,   18,  -50,      5,    1.8,   8.8,    15,     2,        5,  4.4,    5,  -55,    8.8,    15,     2], //R4
-  [   5,  3.5,   10,  -55,      5,    1.8,   8.5,    15,     2,        5,    4,   10,  -55,    8.5,    15,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,   8.8,    15,     2,        6,    4,   13,   30,    8.8,    16,     2], //R2
+  [   6,    3,   18,  -50,      5,    1.8,   8.8,    15,     2,        5,  5,    5,  -55,    8.8,    15,     2], //R4
+  [   5,  4.5,   10,  -55,      5,    1.8,   8.5,    15,     2,        5,    5.3,   10,  -55,    8.5,    15,     2], //R3
+  [   6,    4,   10,  -50,      5,    1.8,   8.8,    15,     2,        6,    4,   13,   30,    8.8,    16,     2], //R2
   [ 4.8,  3.3,   18,  -55,      5,    2.0,   8.5,    15,     2,      4.8,  3.3,   18,  -55,    8.5,    15,     2], //R3 deep
   [   6,    3,   -5,  -50,      5,    1.8,   8.8,    15,     2,        6,  3.5,   13,  -50,    8.8,    15,     2], //R5 mod
   [   6,    3,   13,   30,      5,    1.9,   8.9,    15,     2,        5,  4.4,   10,  -50,    8.9,    16,     2], //R1
@@ -392,16 +392,19 @@ module keycap(
   }
   //Homing dot
     if(homeDot == true){
+      // bar
+        #translate([-1.5,-5.5,4.95])rotate([0,90,0])cylinder(h=3,d = 1, $fn=64);
+
       // center dot
       // #translate([0,0,KeyHeight(keyID)-DishHeightDif(keyID)-0.1])sphere(r = dotRadius); // center dot */
 
       // double bar dots
-      #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
-          translate([.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.5])
-          sphere(r = dotRadius, $fn=16);
-      #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
-          translate([-.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.5])
-          sphere(r = dotRadius, $fn=16);
+      // #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
+          // translate([.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.5])
+          // sphere(r = dotRadius, $fn=16);
+      // #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
+          // translate([-.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.5])
+          // sphere(r = dotRadius, $fn=16);
 
       //tri center dots
 //     #rotate([0,YAngleSkew(keyID),ZAngleSkew(keyID)])translate([0,0,KeyHeight(keyID)-DishHeightDif(keyID)-0.1]){

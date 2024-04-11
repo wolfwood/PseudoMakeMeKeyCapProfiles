@@ -1,4 +1,11 @@
 # Pseudo Make Me Key Cap Profile
+I made these modifications specifically for fdm printing. The stl's will contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
+
+## Changes
+* DES R2-4 + lateral combo compatibility for lofree/choc v2 and mx switches
+* lowered 1mm
+* added fdm parameter for adding chamfers for better fdm printing bed adhesion
+* changed homeDot to a homing bar
 
 ## Update from zzeneg
 * [low profile version](https://github.com/zzeneg/PseudoMakeMeKeyCapProfiles/tree/master/stl/MX/lowprofile) - short skirt, bit tighter stems, tested in MJF Nylon (JLCPCB) with KS-33 switches (Gateron Low Profile), probably compatible with other low profiles
@@ -19,9 +26,7 @@
 * press F6 to render
 * press F7 to export as STL
 
-#Some notes on
-## Distorted Ellipsoidal Saddle (DES)
-High sculpt smooth transition profile
+#Some notes on ## Distorted Ellipsoidal Saddle (DES) High sculpt smooth transition profile
 ![DES](https://raw.githubusercontent.com/pseudoku/PseudoMakeMeKeyCapProfiles/master/Photo/R1-R5.png)
 ### Standard
 ![Neuron v1](https://raw.githubusercontent.com/pseudoku/PseudoMakeMeKeyCapProfiles/master/Photo/DES_cast.jpg)
