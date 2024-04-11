@@ -5,7 +5,7 @@
 * lowered 1mm
 * added fdm parameter for adding chamfers for better fdm printing bed adhesion
 * changed homeDot to a homing bar
-Many of these mods were made for fdm printing. The uploaded stl's will contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
+Some of these changes were made for fdm printing. The uploaded stl's will contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
 
 ## Update from zzeneg
 * [low profile version](https://github.com/zzeneg/PseudoMakeMeKeyCapProfiles/tree/master/stl/MX/lowprofile) - short skirt, bit tighter stems, tested in MJF Nylon (JLCPCB) with KS-33 switches (Gateron Low Profile), probably compatible with other low profiles
