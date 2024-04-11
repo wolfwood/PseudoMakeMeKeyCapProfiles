@@ -1,7 +1,7 @@
 # Pseudo Make Me Key Cap Profile
 
 ## Changes
-* DES R2-4 + lateral combo compatibility for lofree/choc v2 and mx switches
+* DES R2-4 standard and lateral combo compatibility for lofree/choc v2 and mx switches
 * lowered 1mm
 * added fdm parameter for adding chamfers for better fdm printing bed adhesion
 * changed homeDot to a homing bar
