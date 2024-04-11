@@ -21,7 +21,8 @@ keycap(
     crossSection  = false, // center cut to check internal
     homeDot = false, //turn on homedots
     homeRing = false, //turn on homing rings
-    Legends = false
+    Legends = false,
+    fdm = true, // generate chamfer for better fdm bed adhesion
 );
 
 //#translate([0,38,13])cube([18-5.7, 18-5.7,1],center = true);
@@ -315,7 +316,8 @@ module keycap(
     Legends = false,
     homeDot = false,
     homeRing = false,
-    Stab = 0
+    Stab = 0,
+    fdm = false,
 ) {
 
   //Set Parameters for dish shape
@@ -388,7 +390,14 @@ module keycap(
        translate([0,-15,-.1])cube([15,30,20]);
 //      translate([-15.1,-15,-.1])cube([15,30,20]);
      }
-
+    if(fdm == true){
+      h=2; //height of the cutting cube
+      cut_distance=0; //distance from origin
+      translate([-BottomWidth(keyID)/2,0,-0.25])
+        rotate([45,0,90]) cube([20,20,h], center=true);
+      translate([BottomWidth(keyID)/2,0,-0.22])
+        rotate([-45,0,90]) cube([20,20,h], center=true);
+    }
   }
   //Homing dot
     if(homeDot == true){
