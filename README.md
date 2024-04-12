@@ -8,12 +8,12 @@
 
 Some of these changes were made for fdm printing. The uploaded stl's contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
 
-## Huge thanks to
+## Huge thanks
 * Pseudoku for creating and sharing all of his keycaps.
 * zzeneg for sharing the low profile modifications.
 * wolfwood for sharing the chamfering technique and print settings.
 
---
+---
 
 ## Update from zzeneg
 * [low profile version](https://github.com/zzeneg/PseudoMakeMeKeyCapProfiles/tree/master/stl/MX/lowprofile) - short skirt, bit tighter stems, tested in MJF Nylon (JLCPCB) with KS-33 switches (Gateron Low Profile), probably compatible with other low profiles
