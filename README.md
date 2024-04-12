@@ -5,13 +5,14 @@
 * lowered 1mm
 * added fdm parameter for adding chamfers for better fdm printing bed adhesion
 * changed homeDot to a homing bar
+* added slicer settings 3mf for printing in PLA
 
 Some of these changes were made for fdm printing. The uploaded stl's contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
 
 ## Huge thanks
-* Pseudoku for creating and sharing all of his keycaps.
-* zzeneg for sharing the low profile modifications.
-* wolfwood for sharing the chamfering technique and print settings.
+* to Pseudoku for creating and sharing all of his keycaps.
+* to zzeneg for sharing the low profile modifications.
+* to wolfwood for sharing the chamfering technique and print settings.
 
 ---
 
