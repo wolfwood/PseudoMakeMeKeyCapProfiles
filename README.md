@@ -1,12 +1,19 @@
 # Pseudo Make Me Key Cap Profile
 
 ## Changes
-* DES R2-4 standard and lateral combo compatibility for lofree/choc v2 and mx switches
+* DES R2-4 standard and lateral (inner column) compatibility for lofree/choc v2 and mx switches
 * lowered 1mm
 * added fdm parameter for adding chamfers for better fdm printing bed adhesion
 * changed homeDot to a homing bar
 
 Some of these changes were made for fdm printing. The uploaded stl's contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
+
+## Huge thanks to
+* Pseudoku for creating and sharing all of his keycaps.
+* zzeneg for sharing the low profile modifications.
+* wolfwood for sharing the chamfering technique and print settings.
+
+--
 
 ## Update from zzeneg
 * [low profile version](https://github.com/zzeneg/PseudoMakeMeKeyCapProfiles/tree/master/stl/MX/lowprofile) - short skirt, bit tighter stems, tested in MJF Nylon (JLCPCB) with KS-33 switches (Gateron Low Profile), probably compatible with other low profiles
