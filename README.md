@@ -5,7 +5,7 @@
 * lowered 1mm
 * added fdm parameter for adding chamfers for better fdm printing bed adhesion
 * changed homeDot to a homing bar
-* added slicer settings 3mf for printing in PLA
+* added slicer settings for printing in PLA
 
 Some of these changes were made for fdm printing. The uploaded stl's contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
 
