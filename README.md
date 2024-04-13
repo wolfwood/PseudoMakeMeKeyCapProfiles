@@ -3,9 +3,9 @@
 ## Changes
 * DES R2-4 standard and lateral (inner column) compatibility for lofree/choc v2 and mx switches
 * decreased keycap height as much as possible
-* added fdm parameter: option to chamfer bottom edges for better fdm printing bed adhesion
+* added fdm parameter: option to chamfer bottom edges for better bed adhesion
 * added slicer settings for printing in PLA
-* changed homeDot to a homing bar
+* changed homeDot parameter from homing dots to a homing bar
 
 Some of these changes were made for fdm printing. The uploaded stl's contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
 
