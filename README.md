@@ -15,12 +15,11 @@ Some of these changes were made for fdm printing. The uploaded stl's contain cha
 * to wolfwood for sharing the chamfering technique and print settings.
 
 ## Comparison photos
-![front](https://raw.githubusercontent.com/pseudoku/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_front.png)
-![side](https://raw.githubusercontent.com/pseudoku/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_side.png)
-![top](https://raw.githubusercontent.com/pseudoku/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_top.png)
-![ruler](https://raw.githubusercontent.com/pseudoku/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_ruler.png)
+![front](https://raw.githubusercontent.com/dohn-joh/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_front.png)
+![side](https://raw.githubusercontent.com/dohn-joh/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_side.png)
+![top](https://raw.githubusercontent.com/dohn-joh/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_top.png)
+![ruler](https://raw.githubusercontent.com/dohn-joh/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_ruler.png)
 
-![DES](https://raw.githubusercontent.com/pseudoku/PseudoMakeMeKeyCapProfiles/master/Photo/R1-R5.png)
 ---
 
 ## Update from zzeneg
