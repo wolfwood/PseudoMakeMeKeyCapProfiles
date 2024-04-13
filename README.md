@@ -2,7 +2,7 @@
 
 ## Changes
 * DES R2-4 standard and lateral (inner column) compatibility for lofree/choc v2 and mx switches
-* decreased keycap height -1mm
+* decreased keycap height as much as possible
 * added fdm parameter: option to chamfer bottom edges for better fdm printing bed adhesion
 * added slicer settings for printing in PLA
 * changed homeDot to a homing bar
