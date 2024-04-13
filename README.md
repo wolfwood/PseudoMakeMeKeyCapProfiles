@@ -2,6 +2,7 @@
 
 ## Changes
 * DES R2-4 standard and lateral (inner column) compatibility for lofree/choc v2 and mx switches
+    * Note: NOT compatible with Gateron KS-33 switches
 * decreased keycap height as much as possible
 * added fdm parameter: option to chamfer bottom edges for better bed adhesion
 * added [slicer settings](https://github.com/dohn-joh/PseudoMakeMeKeyCapProfiles/tree/master/slicer_settings) for printing in PLA
@@ -10,9 +11,10 @@
 Some of these changes were made for fdm printing. The uploaded stl's contain chamfers. If you want to print using a different method, be sure to change the tolerance values, remove the chamfers, add sprues, etc. 
 
 ## Huge thanks
-* to Pseudoku for creating and sharing all of his keycaps.
-* to zzeneg for sharing the low profile modifications.
-* to wolfwood for sharing the chamfering technique and print settings.
+* to Pseudoku for creating and sharing all of his keycaps and for assisting with debugging.
+* to zzeneg for sharing the low profile modifications and for checking ks33 compatibility.
+* to wolfwood for sharing the chamfering technique and print setting suggestions.
+* to levpopov for the print setting suggestions.
 
 ## Comparison photos
 ![front](https://raw.githubusercontent.com/dohn-joh/PseudoMakeMeKeyCapProfiles/master/Photo/comparison_front.png)
