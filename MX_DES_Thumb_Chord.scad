@@ -1,4 +1,4 @@
-use <./libraries/scad-utils/morphology.scad> //for cheaper minwoski 
+use <./libraries/scad-utils/morphology.scad> //for cheaper minwoski y-skew)
 use <./libraries/scad-utils/transformations.scad>
 use <./libraries/scad-utils/shapes.scad>
 use <./libraries/scad-utils/trajectory.scad>
@@ -27,11 +27,11 @@ GlobalStem = true;
 
 //#translate([0,0,0])rotate([0,0,0])import("DES_T1x.stl");
 mirror([0,0,0])keycap(
-  keyID   = 7, //change profile refer to KeyParameters Struct
+  keyID   = 9, //change profile refer to KeyParameters Struct
   Dish    = GlobalDish, //turn on dish cut
   Stem = GlobalStem,
   crossSection =false,
-  visualizeDish = false, // turn on debug visual of Dish 
+  visualizeDish = true, // turn on debug visual of Dish 
   Sym     = false, //turn on 2ndrary filled symetry 
   homeDot = false,
   fdm = true, // generate chamfer for better fdm bed adhesion
@@ -121,7 +121,7 @@ mirror([0,0,0])keycap(
 //); 
 
 //-Parameters
-wallthickness = 2; // was 1.6
+wallthickness = 1.6; // was 1.6. bumped to 2 for inner col
 topthickness = 3.4; //2 for phat 3 for chicago
 stepsize = 60;  //resolution of Trajectory
 step = 40;       //resolution of ellipes 
@@ -140,7 +140,8 @@ stemLayers      = 50; //resolution of stem to cap top transition
 //#cube([18.16, 18.16, 10], center = true); // sanity check border
 
 
-heightDelta = -2.5;
+//heightDelta = -2.5; //for R2-4
+heightDelta = 0.5; //for T1
 
 //injection param
 draftAngle = 0; //degree  note:Stem Only
@@ -163,8 +164,9 @@ keyParameters = //keyParameters[KeyID][ParameterID]
     [17.16,  17.16,   6.5, 	 6.5,11.55,   -.5,    0,     9,    -8,    -5,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4 8
     [17.16,  17.16,   6.5, 	 6.5, 9.75,   -.5,   .5,     4,    -9,    -5,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
     [17.16,  17.16,   6.5, 	 6.5,10.75,   -.5,    0,   -13,    -8,    -5,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    //Romma 9
-    [17.16,  17.16,   4., 	 6.5,  7,    -.25,   -0.5,   1,    -8,    0,   2,   2,      1,      5,      1,    3.5,     2,       2], //T1
+    //T1 mod 9
+    //[17.16,  17.16,   4., 	 6.5,  7,    -.25,   -0.5,   1,    -8,    0,   2,   2,      1,      5,      1,    3.5,     2,       2], //T1
+    [17.16,  17.16,   4., 	 6.5,  7,    -.25,   -0.5,   1,    -0,    0,   2,   2,      1,      5,      1,    3.5,     2,       2], //T1 changes: reduced surface angle (y-skew)
 ];
 
 dishParameters = //dishParameter[keyID][ParameterID]
@@ -184,7 +186,8 @@ dishParameters = //dishParameter[keyID][ParameterID]
   [   5,  3.9,   10,  -55,      5,    1.8,   9.0,    15,     2,        5,  5.0,   10,  -55,    9.0,    15,     2], //R3
   [   6,    3.9,   10,  -50,      5,    1.8,   9.1,    15,     2,        6,    4,   13,   30,    9.1,    16,     2], //R2
 
-  [   5,  4.2,   8,  -55,      5,    1.8,  10.7,    15,     2,        5,   3.8,   8,   -55,    10.5,   15,     2], //R2
+  //[   5,  4.2,   8,  -55,      5,    1.8,  10.7,    15,     2,        5,   3.8,   8,   -55,    10.5,   15,     2], //T1 original 
+  [   5,  4.8,   2,  -55,      5,    1.8,  10.7,    15,     2,        5.5,   3.8,   2,   -55,    10.5,   15,     2], //T1
 ];
 
 secondaryDishParam = 
@@ -204,7 +207,8 @@ secondaryDishParam =
   [   4.9,    2,    2,     2,   207,    200,    200,   80, 90,  4.05,   3,    8,     2,   213,    195,   191,   80, 90],
   [   4.9,    2,    2,     2,   207,    199,    195,   80, 90,  4.05,   3,    8,     2,   213,    195,   191,   80, 90],
 
-  [   4.5, 2,    2,     2,   208,    207,    210,   80, 90,  4.05,   3,    8,     2,   210,    195,   191,   80, 90]
+  //[   4.5, 2,    2,     2,   208,    207,    210,   80, 90,  4.05,   3,    8,     2,   210,    195,   191,   80, 90]
+  [   4.5, 0,    0,     2,   208,    207,    210,   80, 90,  4.05,   3,    8,     2,   210,    195,   191,   80, 90]
 
 ];
 function BottomWidth(keyID)  = keyParameters[keyID][0];  //
