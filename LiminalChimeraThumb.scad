@@ -418,11 +418,12 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
       DishShape2( a= DishDepthF(i, keyID+1, dishpow), b= FrontDishArc2(i), phi = ForwardTanTransition(i, keyID+1) , theta= 60, r = FTanRadius(i, keyID+1), filRatio = ForwardFilRatio(keyID+1)),
       .5)
   ) ];
-  BackCurve  = [ for(i=[0:len(BackPath)-1])  transform(BackPath[i],
-    Sym ? DishShape2(DishDepthB(i, keyID, dishpow), BackDishArc(i), phi = BackTanTransition(i, keyID), theta= 60, r = BTanRadius(i, keyID), filRatio = BackFilRatio(keyID)) :
+  backmost = len(BackPath)-1;
+  BackCurve  = [ for(i=[0:backmost])  transform(BackPath[backmost - i],
+    Sym ? DishShape2(DishDepthB(backmost - i, keyID, dishpow), BackDishArc(backmost - i), phi = BackTanTransition(backmost - i, keyID), theta= 60, r = BTanRadius(backmost - i, keyID), filRatio = BackFilRatio(keyID)) :
     Transit(
-      DishShape2(DishDepthB(i, keyID, dishpow), BackDishArc(i), phi = BackTanTransition(i, keyID), theta= 60, r = BTanRadius(i, keyID), filRatio = BackFilRatio(keyID)),
-      DishShape2(DishDepthB(i, keyID+1, dishpow), BackDishArc2(i), phi = BackTanTransition(i, keyID+1), theta= 60, r = BTanRadius(i, keyID+1), filRatio = BackFilRatio(keyID+1)),
+      DishShape2(DishDepthB(backmost - i, keyID, dishpow), BackDishArc(backmost - i), phi = BackTanTransition(backmost - i, keyID), theta= 60, r = BTanRadius(backmost - i, keyID), filRatio = BackFilRatio(keyID)),
+      DishShape2(DishDepthB(backmost - i, keyID+1, dishpow), BackDishArc2(backmost - i), phi = BackTanTransition(backmost - i, keyID+1), theta= 60, r = BTanRadius(backmost - i, keyID+1), filRatio = BackFilRatio(keyID+1)),
       .5)
 
   ) ];

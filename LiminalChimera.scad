@@ -454,8 +454,9 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
   FrontCurve = [ for(i=[0:len(FrontPath)-1]) transform(FrontPath[i],
     Sym ? DishShape2( a= DishDepthF(i, keyID, dishpow), b= FrontDishArc(i), phi = ForwardTanTransition(i, keyID) , theta= 60, r = FTanRadius(i, keyID), filRatio = ForwardFilRatio(keyID)) : DishShape( a= DishDepthF(i, keyID,dishpow), b= FrontDishArc(i), phi = ForwardTanTransition(i, keyID)  , theta= 60, r = FTanRadius(i, keyID), filRatio = ForwardFilRatio(keyID))
   ) ];
-  BackCurve  = [ for(i=[0:len(BackPath)-1])  transform(BackPath[i],
-    Sym ? DishShape2(DishDepthB(i, keyID, dishpow), BackDishArc(i), phi = BackTanTransition(i, keyID), theta= 60, r = BTanRadius(i, keyID), filRatio = BackFilRatio(keyID)) : DishShape(DishDepthB(i, keyID, dishpow), BackDishArc(i), phi = BackTanTransition(i, keyID), theta= 60, r = BTanRadius(i, keyID), filRatio = BackFilRatio(keyID))
+  backmost = len(BackPath)-1;
+  BackCurve  = [ for(i=[0:backmost])  transform(BackPath[backmost - i],
+    Sym ? DishShape2(DishDepthB(backmost - i, keyID, dishpow), BackDishArc(backmost - i), phi = BackTanTransition(backmost - i, keyID), theta= 60, r = BTanRadius(backmost - i, keyID), filRatio = BackFilRatio(keyID)) : DishShape(DishDepthB(backmost - i, keyID, dishpow), BackDishArc(backmost - i), phi = BackTanTransition(backmost - i, keyID), theta= 60, r = BTanRadius(backmost - i, keyID), filRatio = BackFilRatio(keyID))
   ) ];
 
    //Homing Arch

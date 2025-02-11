@@ -340,8 +340,9 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
   function BackDishArc(t)  =  pow((t)/(len(FrontPath)),BackArcExpo(keyID))*BackFinArc(keyID) + (1-pow(t/(len(FrontPath)),BackArcExpo(keyID)))*BackInitArc(keyID);
   FrontCurve = [ for(i=[0:len(FrontPath)-1]) transform(FrontPath[i], DishShape2( a= DishDepth(keyID), b= FrontDishArc(i), phi = TransitionAngleInit(keyID) , theta= 60
     , r = FTanRadius(i, keyID))) ];
-  BackCurve  = [ for(i=[0:len(BackPath)-1])  transform(BackPath[i],  DishShape2(DishDepth(keyID), BackDishArc(i), phi = TransitionAngleInit(keyID), theta= 60
-    , r = BTanRadius(i, keyID))) ];
+  backmost = len(BackPath)-1;
+  BackCurve  = [ for(i=[0:backmost])  transform(BackPath[backmost - i],  DishShape2(DishDepth(keyID), BackDishArc(backmost - i), phi = TransitionAngleInit(keyID), theta= 60
+    , r = BTanRadius(backmost - i, keyID))) ];
 //  for(i=[0:len(FrontPath)-1])echo ( len(transform(FrontPath[i], DishShape2( a= DishDepth(keyID), b= FrontDishArc(i), phi = TransitionAngleInit(keyID), theta= 60
 //    , r = FTanRadius(i, keyID)))), TanTransition(i, keyID));
 

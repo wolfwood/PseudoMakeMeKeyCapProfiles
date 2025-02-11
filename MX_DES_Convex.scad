@@ -251,8 +251,11 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false,
   function FrontDishArc(t) =  pow((t)/(len(FrontPath)),FrontArcExpo(keyID))*FrontFinArc(keyID) + (1-pow(t/(len(FrontPath)),FrontArcExpo(keyID)))*FrontInitArc(keyID);
   function BackDishArc(t)  =  pow((t)/(len(FrontPath)),BackArcExpo(keyID))*BackFinArc(keyID) + (1-pow(t/(len(FrontPath)),BackArcExpo(keyID)))*BackInitArc(keyID);
 
-  FrontCurve = [ for(i=[0:len(FrontPath)-1]) transform(FrontPath[i], DishShape(DishDepth(keyID), FrontDishArc(i), DishDepth(keyID)+2.5, d = 0)) ];
-  BackCurve  = [ for(i=[0:len(BackPath)-1])  transform(BackPath[i],  DishShape(DishDepth(keyID),  BackDishArc(i), DishDepth(keyID)+2.5, d = 0)) ];
+  frontmost = len(FrontPath)-1;
+  FrontCurve = [ for(i=[0:frontmost]) transform(FrontPath[frontmost - i], DishShape(DishDepth(keyID), FrontDishArc(frontmost - i), DishDepth(keyID)+2.5, d = 0)) ];
+
+  backmost = len(BackPath)-1;
+  BackCurve  = [ for(i=[0:backmost])  transform(BackPath[backmost - i],  DishShape(DishDepth(keyID),  BackDishArc(backmost - i), DishDepth(keyID)+2.5, d = 0)) ];
 
   //builds
   difference(){

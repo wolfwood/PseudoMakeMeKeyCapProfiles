@@ -391,9 +391,10 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
   FrontCurve = [ for(i=[0:len(FrontPath)-1]) transform(FrontPath[i],
     DishShape2( a= DishDepth(keyID), b= FrontDishArc(i), phi = DishTransition(i,keyID) , theta= 60
     , r = FTanRadius(i, keyID))) ];
-  BackCurve  = [ for(i=[0:len(BackPath)-1])  transform(BackPath[i],
-    DishShape2(DishDepth(keyID), BackDishArc(i), phi = DishTransition(i,keyID), theta= 60
-    , r = BTanRadius(i, keyID))) ];
+  backmost = len(BackPath)-1;
+  BackCurve  = [ for(i=[0:backmost])  transform(BackPath[backmost - i],
+    DishShape2(DishDepth(keyID), BackDishArc(backmost - i), phi = DishTransition(backmost - i,keyID), theta= 60
+    , r = BTanRadius(backmost - i, keyID))) ];
 
   //Secondary Dish
   SFrontPath = quantize_trajectories(SFrontTrajectory(keyID), steps = stepsize, loop=false, start_position= $t*4);
@@ -412,9 +413,9 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
         skin([for (i=[0:layers]) transform(translation(CapTranslation(i, keyID)) * rotation(CapRotation(i, keyID)), elliptical_rectangle(CapTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]); //outer shell
         //Bottom shell
         if( Stem == Choc){
-        skin([for (i=[0:layers]) transform(translation(CapTranslation(i, keyID+1)) * rotation(CapRotation(i, keyID+1)), elliptical_rectangle(CapTransform(i, keyID+1), b =  CapRoundness(i,keyID+1),fn=fn))]); //outer shell
+          skin([for (i=[0:layers]) transform(translation(CapTranslation(layers - i, keyID+1)) * rotation(CapRotation(layers - i, keyID+1)), elliptical_rectangle(CapTransform(layers - i, keyID+1), b =  CapRoundness(layers - i,keyID+1),fn=fn))]); //outer shell
         }else {
-          skin([for (i=[0:layers]) transform(translation(CapTranslation(i, keyID+2)) * rotation(CapRotation(i, keyID+2)), elliptical_rectangle(CapTransform(i, keyID+2), b  = CapRoundness(i,keyID+2),fn=fn))]); //outer shell
+          skin([for (i=[0:layers]) transform(translation(CapTranslation(layers - i, keyID+2)) * rotation(CapRotation(layers - i, keyID+2)), elliptical_rectangle(CapTransform(layers - i, keyID+2), b  = CapRoundness(layers - i,keyID+2),fn=fn))]); //outer shell
           }
         //Cut inner shell
 //      }
