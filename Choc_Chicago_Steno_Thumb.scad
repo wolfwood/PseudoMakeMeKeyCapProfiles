@@ -45,7 +45,7 @@ draftAngle = 0; //degree  note:Stem Only
 
 keyParameters = //keyParameters[KeyID][ParameterID]
 [
-//  BotWid, BotLen, TWDif, TLDif, keyh, WSft, LSft  XSkew, YSkew, ZSkew, WEx, LEx, CapR0i, CapR0f, CapR1i, CapR1f, CapREx, StemEx
+//  BotWid,  BotLen, TWDif,    TLDif, keyh, WSft, LSft  XSkew, YSkew, ZSkew, WEx, LEx, CapR0i, CapR0f,  CapR1i, CapR1f, CapREx,  StemEx
     //Column 0
     //Levee: Chicago in choc Dimension for ref
     [17.20,  16.00,   5.6, 	   5,  5.0,    0,   .0,     5,    -0,    -0,   2, 2.5,    .10,      2,     .10,      3,     2,       2], //Levee Steno R2/R4
@@ -68,7 +68,7 @@ keyParameters = //keyParameters[KeyID][ParameterID]
     [17.20,  16.00,   5.6, 	   5,  4.7,    0,   .0,      3,    -0,    -0,   2, 2.5,    .10,      2,     .10,      3,     2,       2], //Chicago Steno R2 ALT
     [17.20,  16.00,   5.6, 	   5,  5.5,    0,   .0,      7,    -0,    -0,   2, 2.5,    .10,      2,     .10,      3,     2,       2], //Chicago Steno R1 Steap
     [17.20,  16.00,   5.6, 	   5,  7.0,    0,   .0,     10,    -0,    -0,   2, 2.5,    .10,      2,     .10,      3,     2,       2], //Chicago Steno R1 mild with alt R2
-    [17.20,  16.00,  4.25, 	3.25,  5.0,  -.5,  0.0,    0,    0,    -0,   2,   2,    .10,      2,     .10,      2,     2,       2], //Thumb 0
+    [17.20,  16.00,  4.25, 	3.25,  5.0,  -.5,  0.0,      0,    0,      0,   2,   2,    .10,      2,     .10,      2,     2,       2], //Thumb 0
 ];
 
 dishParameters = //dishParameter[keyID][ParameterID]

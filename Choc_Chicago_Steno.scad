@@ -51,8 +51,8 @@ keyParameters = //keyParameters[KeyID][ParameterID]
 //  BotWid, BotLen, TWDif, TLDif, keyh, WSft, LSft  XSkew, YSkew, ZSkew, WEx, LEx, CapR0i, CapR0f, CapR1i, CapR1f, CapREx, StemEx
     //Column 0
     //Levee: Chicago in choc Dimension
-    [17.20,  16.00,   5.6, 	   5,  4.9,    0,   .0,     5,    -0,    -0,   2, 2.5,    .10,      2,     .10,      3,     2,       2], //Chicago Steno R2/R4
-    [17.20,  16.00,   5.6, 	   5,  4.5,    0,   .0,     0,    -0,    -0,   2, 2.5,    .10,      3,     .10,      3,     2,       2], //Chicago Steno R3 flat
+    [17.20,  16.00,   5.6, 	   5,  4.9,    0,   .0,     5,     0,     0,   2, 2.5,    .10,      2,     .10,      3,     2,       2], //Chicago Steno R2/R4
+    [17.20,  16.00,   5.6, 	   5,  4.5,    0,   .0,     0,     0,     0,   2, 2.5,    .10,      3,     .10,      3,     2,       2], //Chicago Steno R3 flat
     [17.20,  16.00,  1.25, 	1.25,  4.5,    0,   .0,     0,    -0,    -0,   2, 2.5,    .10,     .5,     .10,     .5,     2,       2], //Chicago Steno R3 chord
     //mods 3
 
