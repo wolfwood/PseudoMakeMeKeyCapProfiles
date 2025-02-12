@@ -348,8 +348,8 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false,
         rotate([XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([-1.5,-5.25,KeyHeight(keyID)-DishHeightDif(keyID)+.1])sphere(r = dotRadius, $fn= 32); // center dot
       }
     if(visualizeDish == true){
-      #translate([-TopWidShift(keyID),.00001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90-XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
-      #translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),270-ZAngleSkew(keyID)])skin(BackCurve);
+      #translate([TopWidShift(keyID),.00001+TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90-XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
+      #translate([TopWidShift(keyID),TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),270-ZAngleSkew(keyID)])skin(BackCurve);
     }
 }
 //------------------stems
