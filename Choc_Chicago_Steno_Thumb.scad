@@ -9,8 +9,8 @@ use <skin.scad>
 // Choc Chord version Chicago Stenographer with sculpte Thumb cluter
 // change stemrot
 
-mirror([1,0,0])keycap(
-  keyID   = 1, //change profile refer to KeyParameters Struct
+mirror([0,0,0])keycap(
+  keyID   = 3, //change profile refer to KeyParameters Struct
   cutLen  = 0, //Don't change. for chopped caps
   Stem    = true, //tusn on shell and stems
   StemRot = 0,//change stem orientation by deg

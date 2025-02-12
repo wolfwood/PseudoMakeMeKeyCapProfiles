@@ -46,7 +46,7 @@ crossBool=false;
 
 //difference(){
 //  translate([0,16,0])keycap(keyID = 0, cutLen = 0, Stem = MX,  Dish = true, visualizeDish = false, crossSection = crossBool, Sym = true, Rotation = 0);
-  translate([0,0,0])keycap(keyID = 6, cutLen = 0, Stem = Choc,  Dish = true, visualizeDish = false, crossSection = crossBool, Sym = false, Rotation = 0, homeDot=false);
+translate([0,0,0])keycap(keyID = 3, cutLen = 0, Stem = Choc,  Dish = true, visualizeDish = false, crossSection = crossBool, Sym = false, Rotation = 0, homeDot=false);
 //  translate([0,-16,0])keycap(keyID = 6, cutLen = 0, Stem = MX,  Dish = true, visualizeDish =false, crossSection = crossBool, Sym = true, Rotation = 0);
 
 //color("royalblue")translate([25,0,0])cube([50,50,50], center =true);

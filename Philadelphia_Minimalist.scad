@@ -37,7 +37,7 @@ translate([0, 0, -.05])rotate([0,0,0])mirror([0,1,0]){
 //  keycap(keyID = 6, cutLen = 0, Stem = Choc,  Dish = false, SecondaryDish = false, visualizeDish = false, crossSection = false, homeDot = false, Legends = false);
 }
 translate([0, -8, -.05])rotate([0,0,0])mirror([0,0,0]){
-  keycap(keyID = 6, cutLen = 0, Stem = Choc,  Dish = false, SecondaryDish = false, visualizeDish = false, crossSection = false, homeDot = false, Legends = false);
+  keycap(keyID = 0, cutLen = 0, Stem = Choc,  Dish = true, SecondaryDish = false, visualizeDish = false, crossSection = false, homeDot = false, Legends = false);
 }
 
 // translate([14, 14, 0])rotate([0,0,90]) keycap(keyID = 0, cutLen = 0, Stem =true,  Dish = true, SecondaryDish = false,Stab = 0 , visualizeDish = false, crossSection = false, homeDot = false, Legends = false);
