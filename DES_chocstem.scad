@@ -10,7 +10,12 @@ use <skin.scad>
 /*DES (Distorted Elliptical Saddle) Sculpted Profile for 6x3 and corne thumb
 Version 2: Eliptical Rectangle
 */
- h_adjust = 0;
+
+deep = false;
+
+h = 5.5 + (deep ? .4 : 0);
+
+h_adjust = -2.5;
  translate([0,0,0])rotate([0,0,0])keycap(
   keyID  = 4, //change profile refer to KeyParameters Struct
   cutLen = 0, //Don't change. for chopped caps
@@ -117,7 +122,7 @@ dishParameters = //dishParameter[keyID][ParameteID]
 //FFwd1 FFwd2 FPit1 FPit2  DshDep DshHDif FDshDepF FArcFn FArcEx     BFwd1 BFwd2 BPit1 BPit2  BArcIn BArcFn BArcEx
   // low pro 3 row system
   [   6,    3,   18,  -50,      5,    1.8,   8.8,    15,     2,        5,  4.4,    5,  -55,    8.8,    15,     2], //R4
-  [ 4.5,  3.8,   10,  -55,      5,    1.8,   8.5,    15,     2,        5,  3.7,   10,  -55,    8.5,    15,     2], //R3
+  [ 4.5,  4.9,   10,  -55,      5,    1.8,   8.5,    15,     2,        5,  4.2,   10,  -55,    8.5,    15,     2], //R3
   [   6,    3,   10,  -50,      5,    1.8,   8.8,    15,     2,        6,    4,   13,   30,    8.8,    16,     2], //R2
   [ 4.8,    4,   10,  -30,      6,    2.2,     1,   4.5,     2,        4.8,  4,   10,  -30,    8.8,   4.5,     2], //R3 deep
   [   6,    3,   -5,  -50,      5,    1.8,   8.8,    15,     2,        6,  3.5,   13,  -50,    8.8,    15,     2], //R5 mod
