@@ -274,7 +274,7 @@ function StemRadius(t, keyID) = pow(t/stemLayers,1)*2 + (1-pow(t/stemLayers, 1))
   //Stem Exponent
 
 ///----- KEY Builder Module
-module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false, Dish = true, Stem = false, crossSection = true,Legends = false, homeDot = false, Stab = 0) {
+module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false, Dish = true, Stem = false, Legends = false, homeDot = false, Stab = 0) {
 
   //Set Parameters for dish shape
   FrontPath = quantize_trajectories(FrontTrajectory(keyID), steps = stepsize, loop=false, start_position= $t*4);
