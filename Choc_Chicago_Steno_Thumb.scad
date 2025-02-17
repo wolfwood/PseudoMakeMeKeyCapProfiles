@@ -32,8 +32,8 @@ layers = 50;    //resolution of vertical Sweep: 50 for output
 
 //---Stem param
 slop    = 0.3;
-stemWid = 8;
-stemLen = 6;
+stemWid = 8.5;
+stemLen = 4.5;
 stemCrossHeight = 1.8;
 extra_vertical = 0.6;
 stemLayers = 50; //resolution of stem to cap top transition
