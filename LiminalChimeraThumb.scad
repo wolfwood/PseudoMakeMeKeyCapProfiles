@@ -56,10 +56,10 @@ translate([0,0,0])keycap(keyID = 3, cutLen = 0, Stem = Choc,  Dish = true, visua
 //-Parameters
 wallthickness = 1.1; // 1.75 for mx size, 1.1
 topthickness = 2.5; //2 for phat 3 for chicago
-stepsize = 30;  //resolution of Trajectory
+stepsize = 50;  //resolution of Trajectory
 step = 40;       //resolution of ellipes
-fn =32;          //resolution of Rounded Rectangles: 60 for output
-layers = 10;    //resolution of vertical Sweep: 50 for output
+fn =60;          //resolution of Rounded Rectangles: 60 for output
+layers = 50;    //resolution of vertical Sweep: 50 for output
 angularSteps = 30;
 
 //---Stem param

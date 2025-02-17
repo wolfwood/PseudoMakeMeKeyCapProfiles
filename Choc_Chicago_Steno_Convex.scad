@@ -26,7 +26,7 @@ mirror([0,0,0])keycap(
 wallthickness = 1.2;
 topthickness  = 2;   //
 stepsize      = 50;  //resolution of Trajectory
-step          = 2;   //resolution of ellipes
+step          = .5;   //resolution of ellipes
 fn            = 60;  //resolution of Rounded Rectangles: 60 for output
 layers        = 50;  //resolution of vertical Sweep: 50 for output
 dotRadius     = 1.25;   //home dot size

@@ -27,10 +27,10 @@ mirror([0,0,0])keycap(
 //Parameters
 wallthickness = 2.0; // 1.5 for norm, 1.25 for cast master
 topthickness  = 2.5;   // 3 for norm, 2.5 for cast master
-stepsize      = 40;  //resolution of Trajectory
-step          = 6;   //resolution of ellipes
-fn            = 16;  //resolution of Rounded Rectangles: 60 for output
-layers        = 40;  //resolution of vertical Sweep: 50 for output
+stepsize      = 50;  //resolution of Trajectory
+step          = .5;   //resolution of ellipes
+fn            = 60;  //resolution of Rounded Rectangles: 60 for output
+layers        = 50;  //resolution of vertical Sweep: 50 for output
 dotRadius     = 0.55;   //home dot size
 //---Stem param
 Tol    = 0.10;

@@ -79,10 +79,10 @@ mx_al_tp_key = [
 // color("blue")translate([0,0,2.5])rotate_extrude()translate([5,0])circle(d=1,$fn=8);
 //#translate([0,38,13])cube([18-5.7, 18-5.7,1],center = true);
 //Parameters
-wallthickness = .75; // 1.5 for norm, 1.25 for cast master
-topthickness  = 5.5;   // 3 for norm, 2.5 for cast master
-stepsize      = 40;  //resolution of Trajectory
-step          = 6;   //resolution of ellipes
+wallthickness = 1.6; // 1.5 for norm, 1.25 for cast master
+topthickness  = 2.5;   // 3 for norm, 2.5 for cast master
+stepsize      = 60;  //resolution of Trajectory
+step          = 0.5;   //resolution of ellipes
 slop          = 0;
 fn            = 60;  //resolution of Rounded Rectangles: 60 for output
 layers        = 50;  //resolution of vertical Sweep: 50 for output
