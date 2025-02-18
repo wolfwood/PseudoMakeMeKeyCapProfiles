@@ -308,7 +308,7 @@ function StemTranslation(t, keyID) =
   [
     0,   //X shift
     0,   //Y shift
-    stemCrossHeight+.1 + (t/stemLayers*(KeyHeight(keyID)- topthickness + .8 - stemCrossHeight-.1))    //Z shift
+    stemCrossHeight+.1 + (t/stemLayers*(KeyHeight(keyID)- topthickness - stemCrossHeight-.1))    //Z shift
   ];
 
 function StemRotation(t, keyID) =
