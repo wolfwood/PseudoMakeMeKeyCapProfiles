@@ -500,10 +500,13 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = Check
   FrontCurve = [ for(i=[0:len(FrontPath)-1]) transform(FrontPath[i],
     Sym ? DishShape2( a= DishDepth(keyID), b= FrontDishArc(i), phi = ForwardTanTransition(i, keyID) , theta= 60, r = FTanRadius(i, keyID)) : DishShape( a= DishDepth(keyID), b= FrontDishArc(i), phi = ForwardTanTransition(i, keyID)  , theta= 60, r = FTanRadius(i, keyID))
   ) ];
-  BackCurve  = [ for(i=[0:len(BackPath)-1])  transform(BackPath[i],
-    Sym ? DishShape2(DishDepth(keyID), BackDishArc(i), phi = BackTanTransition(i, keyID), theta= 60, r = BTanRadius(i, keyID)) : DishShape(DishDepth(keyID), BackDishArc(i), phi = BackTanTransition(i, keyID), theta= 60, r = BTanRadius(i, keyID))
-  ) ];
-//  for(i=[0:len(FrontPath)-1])echo ( len(transform(FrontPath[i], DishShape2( a= DishDepth(keyID), b= FrontDishArc(i), phi = TransitionAngleInit(keyID), theta= 60
+
+  backmost = len(BackPath)-1;
+  BackCurve  = [ for(i=[0:backmost])  transform(BackPath[backmost - i],
+    Sym ? DishShape2(DishDepth(keyID), BackDishArc(backmost - i), phi = BackTanTransition(backmost - i, keyID), theta= 60, r = BTanRadius(backmost - i, keyID)) : DishShape(DishDepth(keyID), BackDishArc(backmost - i), phi = BackTanTransition(backmost - i, keyID), theta= 60, r = BTanRadius(backmost - i, keyID))
+    ) ];
+
+  //  for(i=[0:len(FrontPath)-1])echo ( len(transform(FrontPath[i], DishShape2( a= DishDepth(keyID), b= FrontDishArc(i), phi = TransitionAngleInit(keyID), theta= 60
 //    , r = FTanRadius(i, keyID)))), TanTransition(i, keyID));
 
 
