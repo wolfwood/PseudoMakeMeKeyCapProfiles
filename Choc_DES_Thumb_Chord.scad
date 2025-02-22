@@ -25,14 +25,16 @@ CheckCross = false;
 GlobalDish = true;
 GlobalStem = true;
 
+nohug = false;
+
 //#translate([0,0,0])rotate([0,0,0])import("DES_T1x.stl");
 mirror([0,0,0])keycap(
   keyID   = 9, //change profile refer to KeyParameters Struct
   Dish    = GlobalDish, //turn on dish cut
   Stem = GlobalStem,
   crossSection =false,
-  visualizeDish = true, // turn on debug visual of Dish
-  Sym     = false, //turn on 2ndrary filled symetry
+  visualizeDish = false, // turn on debug visual of Dish
+  Sym     = nohug, //turn on 2ndrary filled symetry
   homeDot = false,
   fdm = true // generate chamfer for better fdm bed adhesion
 );
@@ -167,7 +169,12 @@ keyParameters = //keyParameters[KeyID][ParameterID]
     //T1 mod 9
     //[17.16,  17.16,   4., 	 6.5,  7,    -.25,   -0.5,   1,    -8,    0,   2,   2,      1,      5,      1,    3.5,     2,       2], //T1
     [17.16,  17.16,   4., 	 6.5,  7,    -.25,   -0.5,   1,    -0,    0,   2,   2,      1,      5,      1,    3.5,     2,       2], //T1 changes: reduced surface angle (y-skew)
-];
+
+    [17.16,  17.16,   6.1, 	 6.5,  5.5, nohug?0:-.5,    0,     0,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4 8
+    [17.16,  17.16,   6.1, 	 6.5,  5.5, nohug?0:-.5,    0,     0,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
+    [17.16,  17.16,   6.1, 	 6.5,  5.5, nohug?0:-.5,    0,     0,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
+
+ ];
 
 dishParameters = //dishParameter[keyID][ParameterID]
 [
@@ -183,12 +190,17 @@ dishParameters = //dishParameter[keyID][ParameterID]
   [   5,  4.3,    5,  -48,      5,      2,  10.5,    10,     2,        6,    4,    2,  -30,   10.5,    18,     2], //T1R2 1u
   //Column 0 (keyID 6-8)
   [   6,    3.9,   18,  -50,      5,    1.8,   9.1,    15,     2,        5,  5.5,    5,  -55,    9.1,    15,     2], //R4
-  [   5,  3.9,   10,  -55,      5,    1.8,   9.0,    15,     2,        5,  5.0,   10,  -55,    9.0,    15,     2], //R3
+  [   5,    3.9,   10,  -55,      5,    1.8,   9.0,    15,     2,        5,  5.0,   10,  -55,    9.0,    15,     2], //R3
   [   6,    3.9,   10,  -50,      5,    1.8,   9.1,    15,     2,        6,    4,   13,   30,    9.1,    16,     2], //R2
 
   //[   5,  4.2,   8,  -55,      5,    1.8,  10.7,    15,     2,        5,   3.8,   8,   -55,    10.5,   15,     2], //T1 original
   [   5,  4.8,   2,  -55,      5,    1.8,  10.7,    15,     2,        5.5,   3.8,   2,   -55,    10.5,   15,     2], //T1
-];
+
+  [   6,    3.9,   18,  -50,      5,    1.8,   9.1,    15,     2,        5,  5.5,    5,  -55,    9.1,    15,     2], //R4
+  [   5,    5.1,   10,  -55,      5,    1.8,   9.0,    15,     2,        5,  5.0,   10,  -55,    9.0,    15,     2], //R3
+  [   6,    3.9,   10,  -50,      5,    1.8,   9.1,    15,     2,        6,    4,   13,   30,    9.1,    16,     2], //R2
+
+ ];
 
 secondaryDishParam =
 [
@@ -208,7 +220,11 @@ secondaryDishParam =
   [   4.9,    2,    2,     2,   207,    199,    195,   80, 90,  4.05,   3,    8,     2,   213,    195,   191,   80, 90],
 
   //[   4.5, 2,    2,     2,   208,    207,    210,   80, 90,  4.05,   3,    8,     2,   210,    195,   191,   80, 90]
-  [   4.5, 0,    0,     2,   208,    207,    210,   80, 90,  4.05,   3,    8,     2,   210,    195,   191,   80, 90]
+  [   4.5, 0,    0,     2,   208,    207,    210,   80, 90,  4.05,   3,    8,     2,   210,    195,   191,   80, 90],
+
+  [   4.9,    2, 3.1/*2*/, 2,   205,    195,    199,   80, 90,  4.05,   3,    8,     2,   213,    195,   191,   80, 90],
+  [   4.9,    2,    2,     2,   207,    200,    200,   80, 90,  4.05,   3,    8,     2,   213,    195,   191,   80, 90],
+  [   4.9,    2,    2,     2,   207,    199,    195,   80, 90,  4.05,   3,    8,     2,   213,    195,   191,   80, 90],
 
 ];
 function BottomWidth(keyID)  = keyParameters[keyID][0];  //
