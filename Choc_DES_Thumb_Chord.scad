@@ -1,10 +1,10 @@
-use <./libraries/scad-utils/morphology.scad> //for cheaper minwoski y-skew)
-use <./libraries/scad-utils/transformations.scad>
-use <./libraries/scad-utils/shapes.scad>
-use <./libraries/scad-utils/trajectory.scad>
-use <./libraries/scad-utils/trajectory_path.scad>
-use <./libraries/sweep.scad>
-use <./libraries/skin.scad>
+use <scad-utils/morphology.scad> //for cheaper minwoski y-skew)
+use <scad-utils/transformations.scad>
+use <scad-utils/shapes.scad>
+use <scad-utils/trajectory.scad>
+use <scad-utils/trajectory_path.scad>
+use <sweep.scad>
+use <skin.scad>
 //use <z-butt.scad>
 // Choc Chord version Chicago Stenographer with sculpte Thumb cluter
 // change stemrot
