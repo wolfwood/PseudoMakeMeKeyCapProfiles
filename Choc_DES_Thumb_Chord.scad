@@ -123,8 +123,8 @@ mirror([0,0,0])keycap(
 //);
 
 //-Parameters
-wallthickness = 1.6; // was 1.6. bumped to 2 for inner col
-topthickness = 3.4; //2 for phat 3 for chicago
+wallthickness = 1.1; // was 1.6. bumped to 2 for inner col
+topthickness = 2.9; //2 for phat 3 for chicago
 stepsize = 60;  //resolution of Trajectory
 step = 40;       //resolution of ellipes
 fn = 60;          //resolution of Rounded Rectangles: 60 for output
@@ -132,18 +132,19 @@ layers = 50;    //resolution of vertical Sweep: 50 for output
 
 //---Stem param
 Tol    = 0.10;
+slop    = 0.3;
 stemRot = 0;
-stemWid = 7.55;
-stemLen = 5.55;
-stemCrossHeight = 3.5;
-extra_vertical  = 0.6;
+stemWid = 8.5;//7.55;
+stemLen = 4.5;
+stemCrossHeight = 1.9; //3.5;
+//extra_vertical  = 0.6;
 StemBrimDep     = -1;
 stemLayers      = 50; //resolution of stem to cap top transition
 //#cube([18.16, 18.16, 10], center = true); // sanity check border
 
 
 //heightDelta = -2.5; //for R2-4
-heightDelta = 0.5; //for T1
+heightDelta = 0;//-2.5; //for T1
 
 //injection param
 draftAngle = 0; //degree  note:Stem Only
@@ -458,7 +459,7 @@ function StemTranslation(t, keyID) =
   [
     0,   //X shift
     0,   //Y shift
-    stemCrossHeight+.1 + (t/stemLayers*(KeyHeight(keyID)- topthickness - stemCrossHeight-.1))    //Z shift
+    stemCrossHeight+.1 + (t/stemLayers*(KeyHeight(keyID)- topthickness +.8 - stemCrossHeight-.1))    //Z shift
   ];
 
 function StemRotation(t, keyID) =
@@ -474,7 +475,7 @@ function StemTransform(t, keyID) =
     pow(t/stemLayers, StemExponent(keyID))*(BottomLength(keyID)-TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/stemLayers, StemExponent(keyID)))*(stemLen - 2*slop)
   ];
 
-function StemRadius(t, keyID) = pow(t/stemLayers,3)*3 + (1-pow(t/stemLayers, 3))*1;
+function StemRadius(t, keyID) = pow(t/stemLayers,3)*2 + (1-pow(t/stemLayers, 3))*1;
   //Stem Exponent
 
 //
@@ -528,11 +529,20 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = Check
         }
       }
       if(Stem == true){
-        translate([0,0,StemBrimDep])rotate(stemRot)difference(){
+        if (true) {
+          rotate([0,0,StemRot]){
+            choc_stem(draftAng = 0);
+
+            *translate([0,0,-.001])skin([for (i=[0:stemLayers-1]) transform(translation(StemTranslation(i,keyID))*rotation(StemRotation(i, keyID)), elliptical_rectangle(StemTransform(i, keyID),b=[.5,.5], fn=8))]);//rounded_rectangle_profile(StemTransform(i, keyID),fn=fn,r=StemRadius(i, keyID)))]); //outer shell
+            translate([0,0,-.001])skin([for (i=[0:stemLayers-1]) transform(translation(StemTranslation(i,keyID))*rotation(StemRotation(i, keyID)), rounded_rectangle_profile(StemTransform(i, keyID),fn=fn,r=StemRadius(i, keyID)))]); //outer shell
+          }
+        } else {
+          translate([0,0,StemBrimDep])rotate(stemRot)difference(){
           //cylinderical Stem body
           cylinder(d =5.5,KeyHeight(keyID)-StemBrimDep, $fn= 32);
           skin(StemCurve);
           skin(StemCurve2);
+          }
         }
 
      }
@@ -618,7 +628,7 @@ function StemTrajectory2() =
 
 
 module choc_stem(draftAng = 5) {
-  stemHeight = 3.1;
+  stemHeight = 3.4;
   dia = .15;
   wids = 1.2/2;
   lens = 2.9/2;
