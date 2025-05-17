@@ -24,7 +24,7 @@ mirror([0,0,0])keycap(
 
 //-Parameters
 wallthickness = 1.1; // 1.75 for mx size, 1.1
-topthickness = 2.5; //2 for phat 3 for chicago
+topthickness = 2.6; //2 for phat 3 for chicago
 stepsize = 50;  //resolution of Trajectory
 step =.5;       //resolution of ellipes
 fn = 60;          //resolution of Rounded Rectangles: 60 for output
@@ -327,7 +327,7 @@ function StemRotation(t, keyID) =
 function StemTransform(t, keyID) =
   [
     pow(t/stemLayers, StemExponent(keyID))*(BottomWidth(keyID) -TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/stemLayers, StemExponent(keyID)))*(stemWid - 2*slop),
-    pow(t/stemLayers, StemExponent(keyID))*(BottomLength(keyID)-TopLenDiff(keyID)-wallthickness*2) + (1-pow(t/stemLayers, StemExponent(keyID)))*(stemLen - 2*slop)
+    pow(t/stemLayers, StemExponent(keyID))*(BottomLength(keyID)) + (1-pow(t/stemLayers, StemExponent(keyID)))*(stemLen - 2*slop)
   ];
 
 function StemRadius(t, keyID) = pow(t/stemLayers,3)*3 + (1-pow(t/stemLayers, 3))*1;
@@ -391,7 +391,7 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false
             translate([Stab/2,0,0])rotate([0,0,StemRot])cherry_stem(KeyHeight(keyID), slop);
             translate([-Stab/2,0,0])rotate([0,0,StemRot])cherry_stem(KeyHeight(keyID), slop);
           }
-          translate([0,0,-.001])skin([for (i=[0:stemLayers-1]) transform(translation(StemTranslation(i,keyID)) * rotation(StemRotation(i, keyID)), rounded_rectangle_profile(StemTransform(i, keyID),fn=fn,r=1 /*StemRadius(i, keyID) */ ))]); //outer shell
+          translate([0,0,-.001])skin([for (i=[0:stemLayers-1]) transform(translation(StemTranslation(i,keyID)) * rotation(StemRotation(i, keyID)), rounded_rectangle_profile(StemTransform(i, keyID),fn=fn,r=StemRadius(i, keyID) ))]); //outer shell
 
        }
 
