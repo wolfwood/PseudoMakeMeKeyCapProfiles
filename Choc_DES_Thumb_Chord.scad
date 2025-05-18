@@ -142,6 +142,9 @@ StemBrimDep     = -1;
 stemLayers      = 50; //resolution of stem to cap top transition
 //#cube([18.16, 18.16, 10], center = true); // sanity check border
 
+// allow importer to query
+function topthickness() = topthickness;
+
 
 //heightDelta = -2.5; //for R2-4
 heightDelta = 0;//-2.5; //for T1

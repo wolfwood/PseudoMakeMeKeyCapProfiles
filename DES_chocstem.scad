@@ -102,6 +102,9 @@ extra_vertical  = 0.6;
 StemBrimDep     = 0.25;
 stemLayers      = 50; //resolution of stem to cap top transition
 
+// allow importer to query
+function topthickness() = topthickness;
+
 
 keyParameters = //keyParameters[KeyID][ParameterID]
 [
